@@ -14,7 +14,12 @@ public class RetrofitRxJavaActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        getSupportActionBar().setTitle("Retrofit&Java");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
+
 
     @Override
     protected int getContentView() {

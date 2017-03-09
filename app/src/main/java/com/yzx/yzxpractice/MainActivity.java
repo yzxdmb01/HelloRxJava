@@ -3,17 +3,14 @@ package com.yzx.yzxpractice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.yzx.yzxpractice.base.BaseActivity;
 import com.yzx.yzxpractice.module.CustomView.CustomViewActivity;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.RetrofitRxJavaActivity;
-import com.yzx.yzxpractice.utils.L;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.toolbar)
