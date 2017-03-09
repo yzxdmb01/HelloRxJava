@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yzx.yzxpractice.MainActivity">
+
+    <include
+        layout="@layout/layout_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/btn_custom_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="自定义View"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_retrofit_java"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Retrofit+RxJava"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>
