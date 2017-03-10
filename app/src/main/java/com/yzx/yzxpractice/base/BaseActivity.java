@@ -22,22 +22,27 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @Nullable
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        L.i("onCreate");
+//        L.i("onCreate");
         setContentView(getContentView());
         ButterKnife.bind(this);
-//        setSupportActionBar(toolbar);
-//
-//        setTranslucentStatus(true);
-//        SystemBarTintManager systemBarTintManager = new SystemBarTintManager(this);
-//        systemBarTintManager.setStatusBarTintEnabled(true);
-//        systemBarTintManager.setStatusBarTintResource(R.color.colorPrimary);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayShowTitleEnabled(true);
+        }
+        initView();
+
     }
+
+    protected abstract void initView();
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

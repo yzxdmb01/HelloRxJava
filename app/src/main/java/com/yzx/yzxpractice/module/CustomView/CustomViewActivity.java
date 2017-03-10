@@ -1,8 +1,6 @@
 package com.yzx.yzxpractice.module.CustomView;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 
 import com.yzx.yzxpractice.R;
@@ -13,9 +11,10 @@ import com.yzx.yzxpractice.base.BaseActivity;
  */
 
 public class CustomViewActivity extends BaseActivity {
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
+
     }
 
     @Override

@@ -8,4 +8,23 @@
         layout="@layout/layout_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_shoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击发射数据源" />
+    <ImageView
+        android:id="@+id/iv_console"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/tv_console"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="30sp" />
+
+
 </LinearLayout>

@@ -22,8 +22,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+
         findViewById(R.id.btn_custom_view).setOnClickListener(this);//自定义view
         findViewById(R.id.btn_retrofit_java).setOnClickListener(this);//retrofit练习
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Override
