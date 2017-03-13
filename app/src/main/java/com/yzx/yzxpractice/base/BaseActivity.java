@@ -32,11 +32,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        L.i("onCreate");
         setContentView(getContentView());
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
 
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
+            L.i("设置ToolBar");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }else{
+            L.i("没设置");
         }
         initView();
 
