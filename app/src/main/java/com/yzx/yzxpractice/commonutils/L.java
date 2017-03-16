@@ -1,4 +1,4 @@
-package com.yzx.yzxpractice.utils;
+package com.yzx.yzxpractice.commonutils;
 
 import android.util.Log;
 

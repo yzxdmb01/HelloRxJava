@@ -18,7 +18,12 @@ public class CustomViewActivity extends BaseActivity {
     }
 
     @Override
-    protected int getContentView() {
+    protected void initPresenter() {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
         return R.layout.activity_custom_view;
     }
 }

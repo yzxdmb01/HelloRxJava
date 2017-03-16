@@ -3,15 +3,14 @@ package com.yzx.yzxpractice.module.Retrofit_RxJava;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.yzx.yzxpractice.R;
 import com.yzx.yzxpractice.base.BaseActivity;
+import com.yzx.yzxpractice.commonutils.ToastUtils;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.model.Course;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.model.Student;
 
@@ -20,7 +19,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -38,11 +36,8 @@ public class RetrofitRxJavaActivity extends BaseActivity {
     @BindView(R.id.iv_console)
     protected ImageView ivConsole;
 
-//    @OnClick(R.id.btn_shoot)
-//    protected void shootSth() {
-////        final int drawableRes = R.drawable.ic_menu_camera;
-//        testFlatMap();
-//    }
+    @BindView(R.id.btn_click)
+    public Button btnClick;
 
     private void testFlatMap() {
         Course courseCh = new Course("ch");
@@ -93,19 +88,38 @@ public class RetrofitRxJavaActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        bindClick();
+    }
+
+    int tempInt = 0;
+
+    private void bindClick() {
+        RxView.clicks(btnClick)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        showProgressDialog("加载中");
+                    }
+                });
+
         Button button = (Button) findViewById(R.id.btn_shoot);
         RxView.clicks(button)
                 .throttleFirst(3, TimeUnit.SECONDS)
                 .subscribe(new Action1<Void>() {
                     @Override
                     public void call(Void aVoid) {
-                        tvConsole.setText(tvConsole.getText()+"0");
+                        tvConsole.setText(tvConsole.getText() + "0");
                     }
                 });
     }
 
     @Override
-    protected int getContentView() {
+    protected void initPresenter() {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
         return R.layout.activity_retrofit;
     }
 }
