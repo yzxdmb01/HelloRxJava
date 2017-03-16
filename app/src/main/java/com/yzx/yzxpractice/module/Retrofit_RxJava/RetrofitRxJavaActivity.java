@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding.view.RxView;
 import com.yzx.yzxpractice.R;
 import com.yzx.yzxpractice.base.BaseActivity;
+import com.yzx.yzxpractice.commonutils.L;
 import com.yzx.yzxpractice.commonutils.ToastUtils;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.model.Course;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.model.Student;
@@ -99,6 +100,22 @@ public class RetrofitRxJavaActivity extends BaseActivity {
                     @Override
                     public void call(Void aVoid) {
                         showProgressDialog("加载中");
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(1000);
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            hideProgressDialog();
+                                        }
+                                    });
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).start();
                     }
                 });
 

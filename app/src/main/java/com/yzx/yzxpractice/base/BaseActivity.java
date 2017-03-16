@@ -25,7 +25,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
-    protected Toolbar toolbar;
+    public Toolbar toolbar;
 
     protected Context mContext;
     private Unbinder unBinder;
@@ -47,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void setToolBar() {
-        L.i("toobar:" + toolbar);
+        L.i("toolbar:" + toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             L.i("设置ToolBar");

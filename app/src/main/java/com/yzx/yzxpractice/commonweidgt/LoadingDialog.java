@@ -6,6 +6,7 @@ package com.yzx.yzxpractice.commonweidgt;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,20 +35,22 @@ public class LoadingDialog {
     }
 
     public static Dialog showLoadingDialog(Context context, String msg) {
-        return showLoadingDialog(context, msg, false);
+        return showLoadingDialog(context, msg, true);
     }
 
     public static Dialog showLoadingDialog(Context context, String msg, boolean cancelable) {
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading, null);
-        TextView tvProgressBraText = (TextView) view.findViewById(R.id.tv_progress_bar_text);
-        tvProgressBraText.setText(msg);
-        tvProgressBraText.setVisibility(msg == null || msg.trim().isEmpty() ? View.GONE : View.VISIBLE);
+//        View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading, null);
+//        TextView tvProgressBraText = (TextView) view.findViewById(R.id.tv_progress_bar_text);
+//        tvProgressBraText.setText(msg);
+//        tvProgressBraText.setVisibility(msg == null || msg.trim().isEmpty() ? View.GONE : View.VISIBLE);
 
-        mProgressDialog = new ProgressDialog(context);
-        mProgressDialog.setCancelable(cancelable);
-        mProgressDialog.setCanceledOnTouchOutside(true);
-        mProgressDialog.setContentView(view, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        mProgressDialog.show();
+//        mProgressDialog = new ProgressDialog(context);
+        mProgressDialog = ProgressDialog.show(context, null, msg);
+//        mProgressDialog.setCancelable(cancelable);
+        mProgressDialog.setCanceledOnTouchOutside(cancelable);
+//        mProgressDialog.setDismissMessage(new Message());
+//        mProgressDialog.setContentView(view, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+//        mProgressDialog.show();
 
         return mProgressDialog;
     }
