@@ -15,9 +15,24 @@
         android:layout_height="match_parent"
         android:layout_below="@id/action_bar">
 
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></RelativeLayout>
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_start_animation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="动画" />
+
+            <lecho.lib.hellocharts.view.PieChartView
+                android:id="@+id/chart"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_below="@id/btn_start_animation"></lecho.lib.hellocharts.view.PieChartView>
+
+        </RelativeLayout>
     </ScrollView>
 
     <com.github.clans.fab.FloatingActionMenu

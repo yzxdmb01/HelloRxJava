@@ -24,7 +24,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
+//    @BindView(R.id.toolbar)
     public Toolbar toolbar;
 
     protected Context mContext;
@@ -47,14 +47,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void setToolBar() {
-        L.i("toolbar:" + toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             L.i("设置ToolBar");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         } else {
-            L.i("没设置");
+            L.i("没设置ToolBar");
         }
     }
 

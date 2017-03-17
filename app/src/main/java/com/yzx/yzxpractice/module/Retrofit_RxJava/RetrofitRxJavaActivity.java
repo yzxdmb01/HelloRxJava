@@ -10,10 +10,11 @@ import android.widget.TextView;
 import com.jakewharton.rxbinding.view.RxView;
 import com.yzx.yzxpractice.R;
 import com.yzx.yzxpractice.base.BaseActivity;
-import com.yzx.yzxpractice.commonutils.L;
+import com.yzx.yzxpractice.base.RxBus;
 import com.yzx.yzxpractice.commonutils.ToastUtils;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.model.Course;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.model.Student;
+import com.yzx.yzxpractice.module.Retrofit_RxJava.model.TestEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -39,6 +41,8 @@ public class RetrofitRxJavaActivity extends BaseActivity {
 
     @BindView(R.id.btn_click)
     public Button btnClick;
+
+    private Subscription subscription;
 
     private void testFlatMap() {
         Course courseCh = new Course("ch");
@@ -108,6 +112,7 @@ public class RetrofitRxJavaActivity extends BaseActivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                            RxBus.getInstance().post(new TestEvent("测试Title", "测试Content"));
                                             hideProgressDialog();
                                         }
                                     });
@@ -128,6 +133,13 @@ public class RetrofitRxJavaActivity extends BaseActivity {
                         tvConsole.setText(tvConsole.getText() + "0");
                     }
                 });
+        subscription = RxBus.getInstance().toObservable(TestEvent.class)
+                .subscribe(new Action1<TestEvent>() {
+                    @Override
+                    public void call(TestEvent testEvent) {
+                        ToastUtils.show(testEvent.getTitle());
+                    }
+                });
     }
 
     @Override
@@ -138,5 +150,11 @@ public class RetrofitRxJavaActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_retrofit;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != subscription && !subscription.isUnsubscribed()) subscription.unsubscribe();
     }
 }

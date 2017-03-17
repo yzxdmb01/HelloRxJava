@@ -5,34 +5,43 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.yzx.yzxpractice.base.BaseActivity;
+import com.yzx.yzxpractice.base.RxBus;
 import com.yzx.yzxpractice.module.CustomView.CustomViewActivity;
 import com.yzx.yzxpractice.module.Retrofit_RxJava.RetrofitRxJavaActivity;
+import com.yzx.yzxpractice.module.Retrofit_RxJava.model.TestEvent;
 
 import butterknife.BindView;
+import rx.Subscription;
+import rx.functions.Action1;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.ll_main)
     LinearLayout llMain;
+    @BindView(R.id.tv_console)
+    TextView tvConsole;
+    Subscription subscription;//订阅事件
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    protected void initView() {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
 
-        findViewById(R.id.btn_custom_view).setOnClickListener(this);//自定义view
+        //测试RxBus接收
+        subscription = RxBus.getInstance().toObservable(TestEvent.class)
+                .subscribe(new Action1<TestEvent>() {
+                    @Override
+                    public void call(TestEvent testEvent) {
+                        tvConsole.setText(testEvent.getTitle() + ",\n" + testEvent.getContent());
+                    }
+                });
+
+        findViewById(R.id.btn_custom_view).setOnClickListener(this);//自定义View/第三方View
         findViewById(R.id.btn_retrofit_java).setOnClickListener(this);//retrofit练习
-    }
-
-    @Override
-    protected void initView() {
-
     }
 
     @Override
@@ -55,5 +64,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(this, RetrofitRxJavaActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != subscription && !subscription.isUnsubscribed()) subscription.unsubscribe();
     }
 }

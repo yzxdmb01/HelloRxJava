@@ -40,4 +40,6 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'io.reactivex:rxjava:1.0.10'
     compile 'com.github.clans:fab:1.6.4'
+
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }
