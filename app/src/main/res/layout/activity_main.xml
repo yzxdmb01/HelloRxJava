@@ -32,6 +32,12 @@
             android:text="Retrofit+RxJava"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="测试" />
+
         <TextView
             android:id="@+id/tv_console"
             android:layout_width="match_parent"
@@ -40,6 +46,12 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="console:" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="just type" />
     </LinearLayout>
 
 </LinearLayout>

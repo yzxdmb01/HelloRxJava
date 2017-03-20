@@ -3,6 +3,7 @@ package com.yzx.yzxpractice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         findViewById(R.id.btn_custom_view).setOnClickListener(this);//自定义View/第三方View
         findViewById(R.id.btn_retrofit_java).setOnClickListener(this);//retrofit练习
+        findViewById(R.id.btn_test).setOnClickListener(this);   //测试按钮
     }
 
     @Override
@@ -63,8 +65,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.btn_retrofit_java:
                 startActivity(new Intent(this, RetrofitRxJavaActivity.class));
                 break;
+            case R.id.btn_test:
+                testSth();
+                break;
         }
     }
+
+    private void testSth() {
+        String a = null;
+        String b = "";
+        if (i++ % 2 == 0) {
+            tvConsole.setText("a isEmpty:" + TextUtils.isEmpty(a));
+        } else {
+            tvConsole.setText("b isEmpty:" + TextUtils.isEmpty(b));
+        }
+    }
+
+    int i = 0;
 
     @Override
     protected void onDestroy() {
