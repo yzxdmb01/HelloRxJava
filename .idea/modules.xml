@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HelloRxJava.iml" filepath="$PROJECT_DIR$/HelloRxJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YzxPractice.iml" filepath="$PROJECT_DIR$/YzxPractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appMusic/appMusic.iml" filepath="$PROJECT_DIR$/appMusic/appMusic.iml" />
       <module fileurl="file://$PROJECT_DIR$/hellocharts-library/hellocharts-library.iml" filepath="$PROJECT_DIR$/hellocharts-library/hellocharts-library.iml" />
     </modules>
   </component>

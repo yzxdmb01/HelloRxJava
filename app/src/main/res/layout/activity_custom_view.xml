@@ -13,8 +13,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_below="@id/action_bar">
+        android:layout_below="@id/action_bar"
+        android:layout_marginBottom="50dp">
 
 
         <RelativeLayout
@@ -31,13 +31,45 @@
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_below="@id/btn_start_animation"></lecho.lib.hellocharts.view.PieChartView>
+                android:layout_below="@id/btn_start_animation"
+                android:visibility="gone"></lecho.lib.hellocharts.view.PieChartView>
 
-            <com.yzx.yzxpractice.view.PageView
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/chart"
-                android:background="#ccc"></com.yzx.yzxpractice.view.PageView>
+            <com.yzx.yzxpractice.view.PageScrollView
+                android:id="@+id/psv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chart" />
+
+            <ViewFlipper
+                android:id="@+id/marquee_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/psv"
+                android:autoStart="true"
+                android:flipInterval="3000"
+                android:inAnimation="@anim/anim_in"
+                android:outAnimation="@anim/anim_out">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="123"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="555"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="abc"
+                    android:textSize="20sp" />
+            </ViewFlipper>
         </RelativeLayout>
     </ScrollView>
 

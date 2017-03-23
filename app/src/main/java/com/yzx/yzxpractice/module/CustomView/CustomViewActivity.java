@@ -1,7 +1,5 @@
 package com.yzx.yzxpractice.module.CustomView;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.widget.Button;
 
 import com.jakewharton.rxbinding.view.RxView;
@@ -46,6 +44,7 @@ public class CustomViewActivity extends BaseActivity {
                 chartView.startDataAnimation();
             }
         });
+
     }
 
     private void toggleLabelsOutside() {
